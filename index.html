@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>näppistesti</title>
+		<link rel="stylesheet" href="CustomKeyboard.css" />
+		<style>
+			html, body {
+				margin: 0;
+				padding: 0;
+				overflow: auto;
+			}
+			
+			input[type="text"] {
+				font-size: 200%;
+				width: 80%;
+				margin: 10%;
+			}
+			
+			.textBlock {
+				max-width: 40em;
+				max-width: 95%;
+				text-align: justify;
+			}
+			
+			h1 {
+				text-align: left;
+			}
+			
+		</style>
+		<script src="jquery-1.10.2.js"></script>
+		<script src="modernizr-latest.js"></script>
+		<script src="CustomKeyboard.js"></script>
+		<script>
+			$(document).ready(function(ev) {
+				var __moveTo = function() {
+					console.log('Initialization done.');
+				} 	
+				
+				var ck = new CustomKeyboard($('#placeholder'), {}, {}, __moveTo);
+				
+				$('.toggleBtn1').click(function(ev) {
+					if (ck.place.hasClass('visible')) ck.hide()
+					else ck.show();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<center>
+			<div class="textBlock">
+				<h1>Custom Soft Keyboard Technical Demo</h1>
+				This demo creates a custom soft keyboard on touch devices. It uses Modernizer to detect the touch capability, and bypasses the soft keyboard provided by the OS by unfocusing the input fields on focus.
+				<p />
+				The keyboard is disabled on non-touch devices by default. It can be forced on by setting <code>config.alwaysOn</code> to <code>true</code>. It has been developed and tested on Android 5.0 (Lollipop) and 6.0 (Marshmallow). <br/>
+				<input type="text" data-keyboard="default" />
+				<p />
+				Custom layouts can be made by creating a HTML snippet for the keyboard and defining its path in <code>config.layoutPath</code>. See <code>numpad.html.snippet</code> for an example.
+				<p />
+				As this is a technical demo, it is not finished, polished or complete. See issues for a list of bugs.
+			</div>
+		</center>
+		<!-- <input type="button" value="toggle" class="toggleBtn1" /> -->
+		<div id="placeholder"></div>
+	</body>
+</html>
+
